@@ -1,0 +1,8 @@
+.home-img {
+   height: 100vh;
+   object-fit: cover;
+}
+
+.home-button {
+   margin-bottom: 25px;
+}
