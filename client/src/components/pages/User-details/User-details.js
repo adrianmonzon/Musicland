@@ -7,7 +7,7 @@ import './User-details.css'
 import { Container, Row, Col, Spinner } from 'react-bootstrap'
 
 import { Link } from 'react-router-dom'
-import ContactForm from '../../shared/ContactForm'
+import ContactForm from './ContactForm'
 
 class UserDetails extends Component {
 
@@ -32,7 +32,7 @@ class UserDetails extends Component {
     render() {
 
         return (
-            <>
+            <section className="details-bg">
             <Container className="user-details">
                 {this.state.user
                     ?
@@ -45,10 +45,10 @@ class UserDetails extends Component {
                             <Col md={4}>
                                 <h3>{this.state.user.name}</h3>
                                 <p>{this.state.user.description}</p>
-                                <hr />
+                                <hr className="details-hr"/>
                                 <p>Instrumento: {this.state.user.instrument}</p>
                                 <p>Edad: {this.state.user.age} años</p>
-                                <Link to="/usuarios" className="btn btn-sm btn-dark">Volver</Link>
+                                <Link to="/usuarios" className="btn btn-sm btn-light">Volver</Link>
                             </Col>
                             <Col md={4}>
                             {this.props.loggedUser && <ContactForm loggedUser={this.props.loggedUser} contactUser={this.state.user}/>}  
@@ -60,7 +60,7 @@ class UserDetails extends Component {
                 }
 
             </Container>
-            </>
+            </section>
         )
     }
 }

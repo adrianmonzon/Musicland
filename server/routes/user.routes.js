@@ -7,10 +7,26 @@ const User = require('../models/User.model')
 
 router.get('/getAllUsers', (req, res) => {
 
+    // if (req.query.select === '1') {
+    //     res.redirect('/entrenamientos/al-aire-libre')
+    // }
+    // else if (req.query.select === '2') {
+    //     res.redirect('/entrenamientos/en-casa')
+    // } else {
+
+        User
+            .find()
+            .then(response => res.json(response))
+            .catch(err => res.status(500).json(err))
+    // }
+})
+
+router.get('/filterByInstrument', (req, res, next) => {
+
     User
-        .find()
+        .find({ instrument })
         .then(response => res.json(response))
-        .catch(err => res.status(500).json(err))
+        .catch(err => next(err))
 })
 
 

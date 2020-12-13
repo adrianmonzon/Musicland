@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import UsersService from './../../../service/users.service'
-import {Container, Row, Spinner} from 'react-bootstrap'
+import {Container, Row, Col, Spinner} from 'react-bootstrap'
 
 import UserCard from './User-card'
-
-// import { Container, Row, Button, Modal } from 'react-bootstrap'
+import Filter from './Filter'
 
 import './Users-list.css'
 import './User-card.css'
@@ -38,13 +37,18 @@ class UsersList extends Component {
 
     render() {
         return (
-            <>
+            <section className="users-list">
             <Container className="list-container">
-                <h1>Listado de músicos</h1>
+                <Row>
+                    <Col md={{ span: 6, offset: 3 }} className="list-top">
+                        <h1>Listado de músicos</h1>
+                        <Filter />
+                    </Col>
+                </Row>
                 <Row>
                 {
                     this.state.users 
-                        ?
+                    ?
                     this.state.users.map(elm => <UserCard key={elm._id} {...elm} />)
                     :
                     <Spinner animation="border" />
@@ -53,7 +57,7 @@ class UsersList extends Component {
            
 
             </Container>
-            </>
+            </section>
 //             <>
 //                 <Container>
 

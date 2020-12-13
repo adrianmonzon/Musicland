@@ -12,7 +12,7 @@ router.post('/send-email', (req, res) => {
 
     transporter
         .sendMail({
-            from: '"Musicland " <correocreado@gmail.com>',
+            from: '"Musicland " <adrianfrasquet@gmail.com>',
             to: contactEmail,
             subject,
             text: message,

@@ -1,3 +1,5 @@
+import { Form, Button } from 'react-bootstrap'
+
 const Filter = () => {
     return (
         <Form inline>
@@ -9,6 +11,7 @@ const Filter = () => {
     className="my-1 mr-sm-2"
     id="inlineFormCustomSelectPref"
     custom
+    size="sm"
   >
     <option value="0">Seleccionar...</option>
     <option value="1">Guitarra eléctrica</option>
@@ -38,9 +41,11 @@ const Filter = () => {
     label="Recordar mi elección"
     custom
   />
-  <Button type="submit" className="my-1">
+  <Button type="submit" className="my-1 btn-sm btn-light">
     Filtrar
   </Button>
 </Form>
     )
 }
+
+export default Filter

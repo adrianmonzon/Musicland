@@ -5,6 +5,8 @@ import logo from './logo.png'
 
 import AuthService from '../../service/auth.service'
 
+import './Navigation.css'
+
 
 class Navigation extends Component {
 
@@ -16,10 +18,10 @@ class Navigation extends Component {
 
     logOut = () => {
         this.authService
-        .logout()
-        .then(res => {
-            this.props.storeUser(undefined)
-            // this.props.history.push('/')
+            .logout()
+            .then(res => {
+                this.props.storeUser(undefined)
+                // this.props.history.push('/')
             })
             .catch(err => console.log(err))
     }
@@ -51,12 +53,12 @@ class Navigation extends Component {
                             this.props.loggedUser
                                 ?
                                 // <Nav.Link as="div" onClick={this.logOut}>Cerrar sesión</Nav.Link>
-                <NavDropdown title={`Hola, ${this.props.loggedUser.username}`} id="basic-nav-dropdown">
-                    <Link to="/editar" ><NavDropdown.Item>Editar perfil</NavDropdown.Item></Link>
-                    <NavDropdown.Item href="#action/3.2" onClick={this.logOut}>Cerrar sesión</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Eliminar perfil</NavDropdown.Item> 
-                </NavDropdown>
+                                <NavDropdown title={`Hola, ${this.props.loggedUser.username}`} id="collasible-nav-dropdown">
+                                    <Link to="/editar" style={{ textDecoration: 'none' }}><NavDropdown.Item className="nav-dropdown">Editar perfil</NavDropdown.Item></Link>
+                                    <Link to="/" style={{ textDecoration: 'none' }}><NavDropdown.Item className="nav-dropdown" onClick={this.logOut}>Cerrar sesión</NavDropdown.Item></Link>
+                                    <NavDropdown.Divider />
+                                    <Link to="#" style={{ textDecoration: 'none' }}><NavDropdown.Item className="nav-dropdown">Eliminar perfil</NavDropdown.Item></Link>
+                                </NavDropdown>
                                 :
                                 <>
                                     <Link to="/registro">
@@ -71,7 +73,7 @@ class Navigation extends Component {
                         {/* <Link to="/perfil">
                             <Nav.Link as="div">Hola, {this.props.loggedUser ? this.props.loggedUser.username : 'invitado'}</Nav.Link>
                         </Link> */}
-                
+
                     </Nav>
                 </Navbar.Collapse>
             </Navbar >

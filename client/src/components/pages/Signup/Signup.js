@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import AuthService from './../../../service/auth.service'
 
+import './Signup.css'
+
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 
 class Signup extends Component {
@@ -16,7 +18,6 @@ class Signup extends Component {
             age: '',
             image: '',
             email: ''
-
         }
         this.authService = new AuthService()
 
@@ -51,7 +52,7 @@ class Signup extends Component {
     render() {
 
         return (
-            <>
+            <section className="signup">
             <Container>
 
                 <Row>
@@ -60,12 +61,12 @@ class Signup extends Component {
                         <hr />
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group controlId="username">
-                                <Form.Label>Nombre de usuario</Form.Label> <small>(Ej. amadeus1756)</small>
-                                <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleInputChange} />
+                                <Form.Label>Nombre de usuario</Form.Label>
+                                <Form.Control type="text" placeholder="Ej. amadeus1756" name="username" value={this.state.username} onChange={this.handleInputChange} />
                             </Form.Group>
                             <Form.Group controlId="name">
-                                <Form.Label>Nombre y apellidos</Form.Label> <small>(Ej. Wolfgang Amadeus Mozart)</small>
-                                <Form.Control type="text" name="name" value={this.state.name} onChange={this.handleInputChange} />
+                                <Form.Label>Nombre y apellidos</Form.Label>
+                                <Form.Control type="text" placeholder="Ej. Wolfgang Amadeus Mozart" name="name" value={this.state.name} onChange={this.handleInputChange} />
                             </Form.Group>
                             <Form.Group controlId="email">
                                 <Form.Label>Email</Form.Label>
@@ -77,7 +78,7 @@ class Signup extends Component {
                             </Form.Group>
                             <Form.Group controlId="description">
                                 <Form.Label>Descripción</Form.Label>
-                                <Form.Control type="text" name="description" value={this.state.description} onChange={this.handleInputChange} />
+                                <Form.Control as="textarea" rows={3} type="text" name="description" value={this.state.description} onChange={this.handleInputChange} />
                             </Form.Group>
                             {/* <Form.Group controlId="instrument">
                                 <Form.Label>Instrumento</Form.Label>
@@ -115,12 +116,12 @@ class Signup extends Component {
                                 <Form.Label>Imagen(URL)</Form.Label>
                                 <Form.Control type="text" name="image" value={this.state.image} onChange={this.handleInputChange} />
                             </Form.Group>
-                           <Button variant="dark" type="submit">Registrarme</Button>
+                           <Button variant="light" type="submit">Registrarme</Button>
                         </Form>
                     </Col>
                 </Row>
             </Container>
-            </>
+            </section>
         )
     }
 }
