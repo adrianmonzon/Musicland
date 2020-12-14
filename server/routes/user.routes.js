@@ -24,7 +24,7 @@ router.get('/getAllUsers', (req, res) => {
 router.get('/filterByInstrument', (req, res, next) => {
 
     User
-        .find({ instrument })
+        .find({ instrument: 'Trompteta' })
         .then(response => res.json(response))
         .catch(err => next(err))
 })
@@ -59,5 +59,12 @@ router.put('/editUser/:user_id', (req, res) => {
         .catch(err => res.status(500).json(err))
 })
 
+router.delete("/deleteUser/:user_id", (req, res) => {
+
+    User
+        .findByIdAndDelete(req.params.id)
+        .then(data => res.status(200).json(data))
+        .catch(err => res.status(500).json({ message: 'Not possible to delete' }))
+})
 
 module.exports = router

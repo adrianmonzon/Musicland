@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom'
 import logo from './logo.png'
 
 import AuthService from '../../service/auth.service'
+import UsersService from '../../service/users.service'
 
 import './Navigation.css'
+import UserService from '../../service/users.service'
 
 
 class Navigation extends Component {
@@ -14,6 +16,7 @@ class Navigation extends Component {
     constructor(props) {
         super(props)
         this.authService = new AuthService()
+        this.userService = new UserService()
     }
 
     logOut = () => {
@@ -24,6 +27,15 @@ class Navigation extends Component {
                 // this.props.history.push('/')
             })
             .catch(err => console.log(err))
+    }
+
+    deleteTheUser = () => {
+        this.userService
+            .deleteUser()
+            .then(res => {
+                this.props.history.push('/')
+            .catch(err => console.log(err))
+            })
     }
 
     render() {
@@ -54,10 +66,10 @@ class Navigation extends Component {
                                 ?
                                 // <Nav.Link as="div" onClick={this.logOut}>Cerrar sesión</Nav.Link>
                                 <NavDropdown title={`Hola, ${this.props.loggedUser.username}`} id="collasible-nav-dropdown">
-                                    <Link to="/editar" style={{ textDecoration: 'none' }}><NavDropdown.Item className="nav-dropdown">Editar perfil</NavDropdown.Item></Link>
+                                    <Link to="/editar-perfil" style={{ textDecoration: 'none' }}><NavDropdown.Item className="nav-dropdown">Editar perfil</NavDropdown.Item></Link>
                                     <Link to="/" style={{ textDecoration: 'none' }}><NavDropdown.Item className="nav-dropdown" onClick={this.logOut}>Cerrar sesión</NavDropdown.Item></Link>
                                     <NavDropdown.Divider />
-                                    <Link to="#" style={{ textDecoration: 'none' }}><NavDropdown.Item className="nav-dropdown">Eliminar perfil</NavDropdown.Item></Link>
+                                    <Link to="#" style={{ textDecoration: 'none' }}><NavDropdown.Item className="nav-dropdown" onClick={this.deleteTheUser}>Eliminar perfil</NavDropdown.Item></Link>
                                 </NavDropdown>
                                 :
                                 <>
