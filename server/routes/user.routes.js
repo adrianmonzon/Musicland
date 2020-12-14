@@ -21,10 +21,10 @@ router.get('/getAllUsers', (req, res) => {
     // }
 })
 
-router.get('/filterByInstrument', (req, res, next) => {
+router.get('/filterByInstrument/:instrument', (req, res, next) => {
 
     User
-        .find({ instrument: 'Trompteta' })
+        .find({ instrument: req.params.instrument })
         .then(response => res.json(response))
         .catch(err => next(err))
 })

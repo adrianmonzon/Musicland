@@ -1,51 +1,41 @@
-import { Form, Button } from 'react-bootstrap'
+import { Form } from "react-bootstrap";
 
-const Filter = () => {
-    return (
-        <Form inline>
-  <Form.Label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
-    Instrumento
-  </Form.Label>
-  <Form.Control
-    as="select"
-    className="my-1 mr-sm-2"
-    id="inlineFormCustomSelectPref"
-    custom
-    size="sm"
-  >
-    <option value="0">Seleccionar...</option>
-    <option value="1">Guitarra eléctrica</option>
-    <option value="2">Guitarra española</option>
-    <option value="3">Batería</option>
-    <option value="4">Bajo</option>
-    <option value="5">Piano</option>
-    <option value="6">Voz</option>
-    <option value="7">Trompeta</option>
-    <option value="8">Acordeón</option>
-    <option value="9">Saxofón</option>
-    <option value="10">Trombón</option>
-    <option value="11">Tuba</option>
-    <option value="12">Gaita</option>
-    <option value="13">Violín</option>
-    <option value="14">Clarinete</option>
-    <option value="15">Violonchelo</option>
-    <option value="16">Contrabajo</option>
-    <option value="17">Fagot</option>
-    <option value="18">Ukelele</option>
+const Filter = (props) => {
+  return (
+    <Form inline>
+      <Form.Label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
+        Filtrar
+      </Form.Label>
+      <Form.Control
+        as="select"
+        className="my-1 mr-sm-2"
+        id="inlineFormCustomSelectPref"
+        custom
+        size="sm"
+        onChange={(e) => props.filterUsers(e.target.value)}
+      >
+        <option value="0">Seleccionar...</option>
+        <option value="Guitarra eléctrica">Guitarra eléctrica</option>
+        <option value="Guitarra española">Guitarra española</option>
+        <option value="Batería">Batería</option>
+        <option value="Bajo">Bajo</option>
+        <option value="Piano">Piano</option>
+        <option value="Voz">Voz</option>
+        <option value="Trompeta">Trompeta</option>
+        <option value="Acordeón">Acordeón</option>
+        <option value="Saxofón">Saxofón</option>
+        <option value="Trombón">Trombón</option>
+        <option value="Tuba">Tuba</option>
+        <option value="Gaita">Gaita</option>
+        <option value="Violín">Violín</option>
+        <option value="Clarinete">Clarinete</option>
+        <option value="Violonchelo">Violonchelo</option>
+        <option value="Contrabajo">Contrabajo</option>
+        <option value="Fagot">Fagot</option>
+        <option value="Ukelele">Ukelele</option>
+      </Form.Control>
+    </Form>
+  );
+};
 
-  </Form.Control>
-  <Form.Check
-    type="checkbox"
-    className="my-1 mr-sm-2"
-    id="customControlInline"
-    label="Recordar mi elección"
-    custom
-  />
-  <Button type="submit" className="my-1 btn-sm btn-light">
-    Filtrar
-  </Button>
-</Form>
-    )
-}
-
-export default Filter
+export default Filter;

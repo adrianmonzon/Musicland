@@ -9,7 +9,7 @@ class ContactForm extends Component {
     this.state = {
       contactEmail: this.props.contactUser.email,
       name: this.props.loggedUser.name,
-      subject: '',
+      subject: `${this.props.loggedUser.name} quiere contactar contigo`,
       message: ''
     }
     this.mailService = new MailService()
@@ -67,7 +67,7 @@ class ContactForm extends Component {
 
           <Form.Group controlId="formGridAddress1">
             <Form.Label>Asunto</Form.Label>
-            <Form.Control type="text" name="subject" value={this.state.subject}  onChange={this.handleInputChange} />
+            <Form.Control type="text" name="subject" readOnly value={this.state.subject}  /*onChange={this.handleInputChange}*/ />
           </Form.Group>
 
           <Form.Group controlId="formGridAddress2">
