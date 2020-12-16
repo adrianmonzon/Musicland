@@ -38,12 +38,12 @@ class EditForm extends Component {
 
   render() {
     return (
-      <section className="signup">
+      <section className="edit">
         <Container>
           <Row>
             <Col md={{ span: 6, offset: 3 }}>
               <h1>Editar perfil</h1>
-              <hr />
+              <hr className="hr"/>
               <Form onSubmit={this.handleSubmit}>
                 <Form.Group controlId="username">
                   <Form.Label>Nombre de usuario</Form.Label>
@@ -86,10 +86,6 @@ class EditForm extends Component {
                     onChange={this.handleInputChange}
                   />
                 </Form.Group>
-                {/* <Form.Group controlId="instrument">
-                                <Form.Label>Instrumento</Form.Label>
-                                <Form.Control type="text" name="instrument" value={this.state.instrument} onChange={this.handleInputChange} />
-                            </Form.Group> */}
                 <Form.Group controlId="instrument">
                   <Form.Label>Instrumento</Form.Label>
                   <Form.Control

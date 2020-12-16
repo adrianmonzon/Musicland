@@ -45,7 +45,7 @@ class UserDetails extends Component {
                             <Col md={4}>
                                 <h3>{this.state.user.name}</h3>
                                 <p>{this.state.user.description}</p>
-                                <hr className="details-hr"/>
+                                <hr className="hr"/>
                                 <p>Instrumento: {this.state.user.instrument}</p>
                                 <p>Edad: {this.state.user.age} años</p>
                                 <Link to="/usuarios" className="btn btn-sm btn-light">Volver</Link>

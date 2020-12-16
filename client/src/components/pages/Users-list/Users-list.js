@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import UsersService from "./../../../service/users.service";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 
-import UserCard from "./User-card";
+import UserCard from './User-card';
 import Filter from "./Filter";
+import SimpleMap from './Map'
 
 import "./Users-list.css";
 import "./User-card.css";
@@ -12,7 +13,7 @@ class UsersList extends Component {
   constructor() {
     super();
     this.state = {
-      users: undefined,
+      users: [],
       // showModal: false
     };
     this.usersService = new UsersService();
@@ -59,6 +60,7 @@ class UsersList extends Component {
               <Spinner animation="border" />
             )}
           </Row>
+          <SimpleMap users={this.state.users}/>
         </Container>
       </section>
       //             <>

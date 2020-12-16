@@ -5,6 +5,7 @@ import FilesService from "./../../../service/upload.service";
 import "./Signup.css";
 
 import { Container, Row, Col, Form, Button, Spinner } from "react-bootstrap";
+import LocationSearchInput from "./Autocomplete";
 
 class Signup extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class Signup extends Component {
         age: "",
         image: "",
         email: "",
+        location: {type: "Point", coordinates: []}
       },
       uploadingActive: false,
     };
@@ -62,6 +64,11 @@ class Signup extends Component {
       .catch((err) => console.log("ERRORRR!", err));
   };
 
+  setLocation = (newCoordinates) => {
+    const newLocation = {type: "Point", coordinates: newCoordinates}
+    this.setState({user: {...this.state.user, location: newLocation}})
+  }
+
   render() {
     return (
       <section className="signup">
@@ -69,7 +76,7 @@ class Signup extends Component {
           <Row>
             <Col md={{ span: 6, offset: 3 }}>
               <h1>Registro de usuario</h1>
-              <hr />
+              <hr className="hr"/>
               <Form onSubmit={this.handleSubmit}>
                 <Form.Group controlId="username">
                   <Form.Label>Nombre de usuario</Form.Label>
@@ -158,6 +165,7 @@ class Signup extends Component {
                     onChange={this.handleInputChange}
                   />
                 </Form.Group>
+                <LocationSearchInput setLocation={this.setLocation}/>
                 <Form.Group>
                   <Form.Label>
                     Imagen {this.state.uploadingActive && <Spinner />}

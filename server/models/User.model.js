@@ -35,18 +35,16 @@ const userSchema = new Schema({
         default: 'GUEST'
     },
     email: String,
-    // location: {                 
-    //     type: {
-    //         type: String,
-    //         default: 'Point'
-    //     },
-    //     coordinates: [Number]
-    // },
+    location: {                 
+        type: {
+            type: String,
+            default: 'Point'
+        },
+        coordinates: [Number]
+    }
 }, {
     timestamps: true
 })
-
-// userSchema.index({ location: '2dsphere' }) 
 
 const User = mongoose.model("User", userSchema)
 
