@@ -10,26 +10,32 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      name: "",
-      password: "",
-      description: "",
-      instrument: "",
-      age: "",
-      image: "",
-      email: "",
+      user: {
+        username: "",
+        name: "",
+        password: "",
+        description: "",
+        instrument: "",
+        age: "",
+        image: "",
+        email: "",
+      },
+      uploadingActive: false,
     };
     this.authService = new AuthService();
     this.filesService = new FilesService();
   }
 
-  handleInputChange = (e) => this.setState({ [e.target.name]: e.target.value });
+  handleInputChange = (e) =>
+    this.setState({
+      user: { ...this.state.user, [e.target.name]: e.target.value },
+    });
 
   handleSubmit = (e) => {
     e.preventDefault();
 
     this.authService
-      .signup(this.state)
+      .signup(this.state.user)
       .then((theLoggedInUser) => {
         this.props.storeUser(theLoggedInUser.data);
         this.props.history.push("/usuarios");
@@ -47,27 +53,14 @@ class Signup extends Component {
     this.filesService
       .uploadImage(uploadData)
       .then((response) => {
+        console.log(response)
         this.setState({
-          coaster: {
-            ...this.state.coaster,
-            imageUrl: response.data.secure_url,
-          },
-          // uploadingActive: false
+          user: { ...this.state.user, image: response.data.secure_url },
+          uploadingActive: false,
         });
       })
       .catch((err) => console.log("ERRORRR!", err));
   };
-
-  // handleSubmit = e => {
-  //     e.preventDefault()
-
-  //     this.usersService
-  //         .saveUser(this.state)
-  //         .then(res => {
-  //             this.props.updateList()
-  //         })
-  //         .catch(err => console.log(err))
-  // }
 
   render() {
     return (
@@ -127,10 +120,6 @@ class Signup extends Component {
                     onChange={this.handleInputChange}
                   />
                 </Form.Group>
-                {/* <Form.Group controlId="instrument">
-                                <Form.Label>Instrumento</Form.Label>
-                                <Form.Control type="text" name="instrument" value={this.state.instrument} onChange={this.handleInputChange} />
-                            </Form.Group> */}
                 <Form.Group controlId="instrument">
                   <Form.Label>Instrumento</Form.Label>
                   <Form.Control
@@ -169,19 +158,13 @@ class Signup extends Component {
                     onChange={this.handleInputChange}
                   />
                 </Form.Group>
-                {/* <Form.Group controlId="image">
-                                <Form.Label>Imagen(URL)</Form.Label>
-                                <Form.Control type="text" name="image" value={this.state.image} onChange={this.handleInputChange} />
-                            </Form.Group> */}
                 <Form.Group>
                   <Form.Label>
-                    Imagen (file) {this.state.uploadingActive && <Spinner />}
+                    Imagen {this.state.uploadingActive && <Spinner />}
                   </Form.Label>
                   <Form.Control type="file" onChange={this.handleImageUpload} />
                 </Form.Group>
-                <Button variant="light" type="submit">
-                  Registrarme
-                </Button>
+                <Button variant="light" type="submit" disabled={this.state.uploadingActive}> {this.state.uploadingActive ? "Subiendo imagen..." : "Registrarme"}</Button>
               </Form>
             </Col>
           </Row>

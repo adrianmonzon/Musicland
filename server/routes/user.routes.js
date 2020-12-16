@@ -7,18 +7,10 @@ const User = require('../models/User.model')
 
 router.get('/getAllUsers', (req, res) => {
 
-    // if (req.query.select === '1') {
-    //     res.redirect('/entrenamientos/al-aire-libre')
-    // }
-    // else if (req.query.select === '2') {
-    //     res.redirect('/entrenamientos/en-casa')
-    // } else {
-
         User
             .find()
             .then(response => res.json(response))
             .catch(err => res.status(500).json(err))
-    // }
 })
 
 router.get('/filterByInstrument/:instrument', (req, res, next) => {
@@ -54,7 +46,7 @@ router.post('/newUser', (req, res) => {
 router.put('/editUser/:user_id', (req, res) => {
 
     User
-        .findByIdAndUpdate(req.params.user_id, req.body)
+        .findByIdAndUpdate(req.params.user_id, req.body, {new: true})
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
@@ -62,7 +54,7 @@ router.put('/editUser/:user_id', (req, res) => {
 router.delete("/deleteUser/:user_id", (req, res) => {
 
     User
-        .findByIdAndDelete(req.params.id)
+        .findByIdAndDelete(req.params.user_id)
         .then(data => res.status(200).json(data))
         .catch(err => res.status(500).json({ message: 'Not possible to delete' }))
 })

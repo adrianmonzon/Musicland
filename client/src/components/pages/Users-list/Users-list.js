@@ -54,7 +54,7 @@ class UsersList extends Component {
           </Row>
           <Row>
             {this.state.users ? (
-              this.state.users.map((elm) => <UserCard key={elm._id} {...elm} />)
+              this.state.users.map((elm) => <UserCard key={elm._id} {...elm} loggedUser={this.props.loggedUser} />)
             ) : (
               <Spinner animation="border" />
             )}

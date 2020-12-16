@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, /*Toast, Button*/ } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "./logo.png";
+import swal from 'sweetalert'
 
 import AuthService from "../../service/auth.service";
-import UsersService from "../../service/users.service";
+import UserService from "../../service/users.service";
 
 import "./Navigation.css";
-import UserService from "../../service/users.service";
 
 class Navigation extends Component {
   constructor(props) {
@@ -26,13 +26,32 @@ class Navigation extends Component {
       .catch((err) => console.log(err));
   };
 
-//   deleteTheUser = () => {
-//     this.userService.deleteUser()
-//     .then((res) => {
-//       this.props.history.push("/")
-//     });
-//     .catch((err) => console.log(err));
-//   };
+  deleteTheUser = () => {
+    this.userService.deleteUser(this.props.loggedUser._id)
+      .then((res) => {
+        this.props.storeUser(undefined)
+        this.props.history.push("/")
+      })
+      .catch((err) => console.log(err))
+  }
+
+  confirmDelete = () => {
+    swal({
+      title: "Mensaje de confirmación",
+      text: "¿Estás segur@ de que quieres eliminar tu perfil?",
+      icon: "warning",
+      buttons: ["No", "Sí"]
+    })
+    .then(answer => {
+      if (answer) {
+        swal({
+          // deleteTheUser,
+          text: "El usuario se ha eliminado con éxito",
+          icon: "success"
+        })
+      }
+    })
+  }
 
   render() {
     return (
@@ -59,16 +78,12 @@ class Navigation extends Component {
               <Nav.Link as="div">Músicos</Nav.Link>
             </Link>
             {this.props.loggedUser ? (
-              // <Nav.Link as="div" onClick={this.logOut}>Cerrar sesión</Nav.Link>
-              <NavDropdown
-                title={`Hola, ${this.props.loggedUser.username}`}
-                id="collasible-nav-dropdown"
-              >
-                <Link to="/editar-perfil" style={{ textDecoration: "none" }}>
-                  <NavDropdown.Item className="nav-dropdown">
+              <NavDropdown title={`Hola, ${this.props.loggedUser.username}`} id="collasible-nav-dropdown">
+                <NavDropdown.Item className="nav-dropdown">
+                  <Link to="/editar-perfil" style={{ textDecoration: "none", color: "black" }}>
                     Editar perfil
-                  </NavDropdown.Item>
-                </Link>
+                  </Link>
+                </NavDropdown.Item>
                 <Link to="/" style={{ textDecoration: "none" }}>
                   <NavDropdown.Item
                     className="nav-dropdown"
@@ -78,28 +93,33 @@ class Navigation extends Component {
                   </NavDropdown.Item>
                 </Link>
                 <NavDropdown.Divider />
-                <Link to="#" style={{ textDecoration: "none" }}>
-                  <NavDropdown.Item
-                    className="nav-dropdown"
-                    onClick={this.deleteTheUser}
-                  >
-                    Eliminar perfil
-                  </NavDropdown.Item>
-                </Link>
+                {/* <Link to="#" style={{ textDecoration: "none" }}> */}
+                <NavDropdown.Item
+                  className="nav-dropdown"
+                  onClick={/*<Toast>
+                    <Toast.Header>
+                      <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" />
+                      <strong className="mr-auto">Bootstrap</strong>
+                      <small>11 mins ago</small>
+                    </Toast.Header>
+                    <Toast.Body>¿Estás segur@ de que quieres eliminar tu perfil?<Button onClick=*/this.confirmDelete}/*>Sí</Button></Toast.Body>
+                  </Toast>}*/
+                  style={{ textDecoration: "none" }}
+                >
+                  Eliminar perfil
+                </NavDropdown.Item>
+                {/* </Link> */}
               </NavDropdown>
             ) : (
-              <>
-                <Link to="/registro">
-                  <Nav.Link as="div">Registro</Nav.Link>
-                </Link>
-                <Link to="/iniciar-sesion">
-                  <Nav.Link as="div">Iniciar sesión</Nav.Link>
-                </Link>
-              </>
-            )}
-            {/* <Link to="/perfil">
-                            <Nav.Link as="div">Hola, {this.props.loggedUser ? this.props.loggedUser.username : 'invitado'}</Nav.Link>
-                        </Link> */}
+                <>
+                  <Link to="/registro">
+                    <Nav.Link as="div">Registro</Nav.Link>
+                  </Link>
+                  <Link to="/iniciar-sesion">
+                    <Nav.Link as="div">Iniciar sesión</Nav.Link>
+                  </Link>
+                </>
+              )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -37,7 +37,8 @@ const userSchema = new Schema({
     email: String,
     // location: {                 
     //     type: {
-    //         type: String
+    //         type: String,
+    //         default: 'Point'
     //     },
     //     coordinates: [Number]
     // },
