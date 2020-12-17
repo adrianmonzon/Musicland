@@ -4,6 +4,10 @@ import PlacesAutocomplete, {
     getLatLng,
 } from 'react-places-autocomplete';
 
+import { FormControl } from 'react-bootstrap'
+
+import './Autocomplete.css'
+
 class LocationSearchInput extends React.Component {
     constructor(props) {
         super(props);
@@ -32,11 +36,11 @@ class LocationSearchInput extends React.Component {
                 onSelect={this.handleSelect}
             >
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                    <div>
-                        <input
+                    <div className="input-location">
+                        <FormControl 
                             {...getInputProps({
-                                placeholder: 'Search Places ...',
-                                className: 'location-search-input',
+                                placeholder: 'Buscar ciudad...',
+                                className: 'location-search-input input-location',
                             })}
                         />
                         <div className="autocomplete-dropdown-container">

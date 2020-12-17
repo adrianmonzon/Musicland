@@ -4,7 +4,7 @@ import { Container, Row, Col, Spinner } from "react-bootstrap";
 
 import UserCard from './User-card';
 import Filter from "./Filter";
-import SimpleMap from './Map'
+import ListMap from './List-Map'
 
 import "./Users-list.css";
 import "./User-card.css";
@@ -20,27 +20,24 @@ class UsersList extends Component {
   }
 
   componentDidMount = () => {
-    /* = () => this.refreshCoasters() */
+   this.getAllUsers()
+  };
+
+  getAllUsers = () => {
     this.usersService
       .getUsers()
       .then((res) => this.setState({ users: res.data }))
       .catch((err) => console.log(err));
-  };
-
-  //     refreshCoasters = () => {
-  //         this.coastersService
-  //             .getCoasters()
-  //             .then(res => this.setState({ coasters: res.data }))
-  //             .catch(err => console.log(err))
-  //     }
-
-  //     handleModal = visible => this.setState({ showModal: visible })
+  }
 
   filterByInstrument = (instrument) => {
-    this.usersService
+    if (instrument === 'all') this.getAllUsers()
+    else {
+      this.usersService
       .filterByInstrument(instrument)
       .then((res) => this.setState({ users: res.data }))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+    }
   };
 
   render() {
@@ -57,37 +54,12 @@ class UsersList extends Component {
             {this.state.users ? (
               this.state.users.map((elm) => <UserCard key={elm._id} {...elm} loggedUser={this.props.loggedUser} />)
             ) : (
-              <Spinner animation="border" />
-            )}
+                <Spinner animation="border" variant="light" />
+              )}
           </Row>
-          <SimpleMap users={this.state.users}/>
+          <ListMap users={this.state.users} />
         </Container>
       </section>
-      //             <>
-      //                 <Container>
-
-      //                     <h1>Listado de montañas rusas</h1>
-
-      //                     <Button onClick={() => this.handleModal(true)} variant="dark" size="sm">Crear nueva montaña rusa</Button>
-
-      //                     <Row>
-      //                         {
-      //                             this.state.coasters
-      //                                 ?
-      //                                 this.state.coasters.map(elm => <CoasterCard key={elm._id} {...elm} />)
-      //                                 :
-      //                                 <Loader />
-      //                         }
-      //                     </Row>
-      //                 </Container>
-
-      //                 <Modal show={this.state.showModal} onHide={() => this.handleModal(false)}>
-      //                     <Modal.Body>
-      //                         <CoasterForm closeModal={() => this.handleModal(false)} updateList={this.refreshCoasters} />
-      //                     </Modal.Body>
-      //                 </Modal>
-
-      //             </>
     );
   }
 }

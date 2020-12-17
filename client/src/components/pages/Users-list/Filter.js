@@ -14,7 +14,7 @@ const Filter = (props) => {
         size="sm"
         onChange={(e) => props.filterUsers(e.target.value)}
       >
-        <option value="0">Seleccionar...</option>
+        <option value="all">Cualquier instrumento</option>
         <option value="Guitarra eléctrica">Guitarra eléctrica</option>
         <option value="Guitarra española">Guitarra española</option>
         <option value="Batería">Batería</option>

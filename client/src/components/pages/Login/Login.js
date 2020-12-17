@@ -40,7 +40,7 @@ class Login extends Component {
                 <Row>
                     <Col md={{ span: 6, offset: 3 }}>
                         <h1>Iniciar sesión</h1>
-                        <hr />
+                        <hr className="login-hr"/>
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group className="w-50" controlId="username">
                                 <Form.Label>Nombre de usuario</Form.Label>

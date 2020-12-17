@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import UsersService from './../../../service/users.service'
+import UserMap from './User-Map'
 
 
 import './User-details.css'
@@ -14,7 +15,7 @@ class UserDetails extends Component {
     constructor() {
         super()
         this.state = {
-            user: undefined
+            user: undefined //[]
         }
         this.usersService = new UsersService()
     }
@@ -33,33 +34,42 @@ class UserDetails extends Component {
 
         return (
             <section className="details-bg">
-            <Container className="user-details">
-                {this.state.user
-                    ?
-                    <>
-                        <h1>Detalles</h1>
-                        <Row>
-                            <Col md={4} >
-                                <img src={this.state.user.image} alt={this.state.user.username} />
-                            </Col>
-                            <Col md={4}>
-                                <h3>{this.state.user.name}</h3>
-                                <p>{this.state.user.description}</p>
-                                <hr className="hr"/>
-                                <p>Instrumento: {this.state.user.instrument}</p>
-                                <p>Edad: {this.state.user.age} años</p>
-                                <Link to="/usuarios" className="btn btn-sm btn-light">Volver</Link>
-                            </Col>
-                            <Col md={4}>
-                            {this.props.loggedUser && <ContactForm loggedUser={this.props.loggedUser} contactUser={this.state.user}/>}  
-                            </Col>
-                        </Row>              
-                    </>
-                    :
-                    <Spinner animation="border" />
-                }
+                <Container className="user-details">
+                    {this.state.user
+                        ?
+                        <>
+                            <h1>Detalles</h1>
+                            <Row>
+                                <Col md={6} >
+                                    <img src={this.state.user.image} alt={this.state.user.username} />
+                                </Col>
+                                <Col md={6}>
+                                    <h3>{this.state.user.name}</h3>
+                                    <p>{this.state.user.description}</p>
+                                    <hr className="hr" />
+                                    <p>Instrumento: {this.state.user.instrument}</p>
+                                    <p>Edad: {this.state.user.age} años</p>
+                                    <Link to="/usuarios" className="btn btn-md btn-light">Volver</Link>
+                                </Col>
+                            </Row>
+                            <Row>
+                            </Row>
+                            <Row className="contact-row">
+                                <Col md={{ span: 6, offset: 3 }}>
+                                    {this.props.loggedUser && <ContactForm loggedUser={this.props.loggedUser} contactUser={this.state.user} />}
+                                </Col>
+                                
+                                    <Col md={{ span: 6, offset: 3 }}>
+                                        <UserMap user={this.state.user}/>
+                                    </Col>
+                                
+                            </Row>
+                        </>
+                        :
+                        <Spinner animation="border" />
+                    }
 
-            </Container>
+                </Container>
             </section>
         )
     }

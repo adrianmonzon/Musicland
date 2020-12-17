@@ -165,7 +165,11 @@ class Signup extends Component {
                     onChange={this.handleInputChange}
                   />
                 </Form.Group>
+                <Form.Group>
+                  <Form.Label> Ubicación
+                  </Form.Label>
                 <LocationSearchInput setLocation={this.setLocation}/>
+                </Form.Group>
                 <Form.Group>
                   <Form.Label>
                     Imagen {this.state.uploadingActive && <Spinner />}

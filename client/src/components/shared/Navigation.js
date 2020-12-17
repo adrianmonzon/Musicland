@@ -43,8 +43,9 @@ const Navigation = (props) => {
       buttons: ["No", "Sí"]
     })
       .then(answer => {
-        deleteTheUser()
+        
         if (answer) {
+          deleteTheUser()
           swal({
             text: "El usuario se ha eliminado con éxito",
             icon: "success"

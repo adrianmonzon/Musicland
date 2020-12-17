@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Col, Button } from 'react-bootstrap'
+import { Form, Col, Button, Row } from 'react-bootstrap'
 import MailService from './../../../service/mail.service'
 
 class ContactForm extends Component {
@@ -8,26 +8,13 @@ class ContactForm extends Component {
     super(props)
     this.state = {
       contactEmail: this.props.contactUser.email,
+      contactName: this.props.contactUser.name,
       name: this.props.loggedUser.name,
       subject: `${this.props.loggedUser.name} quiere contactar contigo`,
       message: ''
     }
     this.mailService = new MailService()
   }
-
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //   // this.mailService.sendMail(this.state)
-  //   // .then((response) => {
-  //   //   if (response.data.status === 'success') {
-  //   //     alert("Message Sent.");
-  //   //     this.resetForm()
-  //   //   } else if (response.data.status === 'fail') {
-  //   //     alert("Message failed to send.")
-  //   //   }
-  //   // })
-  //   console.log(this.mailService)
-  // }
 
   handleSubmit = e => {
     e.preventDefault()
@@ -52,29 +39,38 @@ class ContactForm extends Component {
   render() {
     return (
       <section>
+        <Row>
+          <Col md={{ span: 6, offset: 3 }}>
+            <h3>Contacta con {this.state.contactName}</h3>
+          </Col>
+        </Row>
         <Form onSubmit={this.handleSubmit}>
           <Form.Row>
-            <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Group as={Col} controlId="formGridName">
               <Form.Label>De</Form.Label>
-              <Form.Control type="text" placeholder="Enter email" readOnly value={this.state.name}/>
+              <Form.Control type="text" placeholder="Enter name" name="name" readOnly value={this.state.name}/>
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridPassword">
+            <Form.Group as={Col} controlId="formGridEmail">
               <Form.Label>Para</Form.Label>
-              <Form.Control type="text" placeholder="Password" readOnly value={this.state.contactEmail}/>
+              <Form.Control type="text" placeholder="Enter email" name="contactEmail" readOnly value={this.state.contactEmail}/>
             </Form.Group>
           </Form.Row>
 
-          <Form.Group controlId="formGridAddress1">
+          <Form.Group controlId="formGridSubject">
             <Form.Label>Asunto</Form.Label>
-            <Form.Control type="text" name="subject" readOnly value={this.state.subject}  /*onChange={this.handleInputChange}*/ />
+            <Form.Control type="text" name="subject" value={this.state.subject}  onChange={this.handleInputChange} />
           </Form.Group>
 
           <Form.Group controlId="formGridAddress2">
             <Form.Label>Mensaje</Form.Label>
             <Form.Control as="textarea" rows={3} name="message" value={this.state.message} onChange={this.handleInputChange} />
           </Form.Group>
-          <Button variant="btn btn-sm btn-light" type="submit">Contactar</Button>
+          <Row>
+            <Col md={{ span: 4, offset: 5 }}>
+              <Button variant="btn btn-sm btn-light" type="submit">Contactar</Button>
+            </Col>
+          </Row>
         </Form>
       </section>
     )
