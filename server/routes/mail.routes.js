@@ -18,7 +18,7 @@ router.post('/send-email', (req, res) => {
             text: message,
             html: `<b>${message}</b>`
         })
-        .then(info => res.send(info))
+        .then(info => res.json(info))
         .catch(error => console.log(error))
 })
 

@@ -60,7 +60,7 @@ const Navigation = (props) => {
         <Navbar.Brand>
           <img
             alt="Logotipo"
-            src=/*{logo}*/ "https://lighthousejersey.com/listen.png"
+            src={logo} 
             width="30"
             height="30"
             className="d-inline-block align-top"

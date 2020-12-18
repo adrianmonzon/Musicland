@@ -5,7 +5,7 @@
 }
 
 .details-bg {
-    background-image: url("https://images.unsplash.com/photo-1518166886483-4d3dd3f562b0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80");
+    background-image: url("./details-bg.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
