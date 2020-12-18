@@ -4,6 +4,10 @@
     object-fit: cover;
 }
 
+.user-details {
+    padding-top: 30px;
+}
+
 .details-bg {
     background-image: url("./details-bg.jpeg");
     background-position: center;

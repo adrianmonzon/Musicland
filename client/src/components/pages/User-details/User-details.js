@@ -38,7 +38,6 @@ class UserDetails extends Component {
                     {this.state.user
                         ?
                         <>
-                            <h1>Detalles</h1>
                             <Row>
                                 <Col md={6} >
                                     <img src={this.state.user.image} alt={this.state.user.username} />
