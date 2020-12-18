@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Col, Button, Row } from 'react-bootstrap'
 import MailService from './../../../service/mail.service'
+import swal from 'sweetalert'
+// import { useHistory } from 'react-router-dom'
 
 class ContactForm extends Component {
 
@@ -16,6 +18,7 @@ class ContactForm extends Component {
     this.mailService = new MailService()
   }
 
+  
   handleSubmit = e => {
     e.preventDefault()
     this.mailService.sendMail(this.state)
@@ -31,6 +34,17 @@ class ContactForm extends Component {
 
   resetForm() {
     this.setState({ name: '', contactEmail: '', message: '' })
+  }
+
+  confirmMessage = () => {
+    swal({
+      title: "Mensaje enviado con éxito",
+      icon: "success",
+    })
+    // .then(() => {
+    //   const history = useHistory()
+    //   history.push('/')
+    // })
   }
 
   handleInputChange = e => this.setState({ [e.target.name]: e.target.value })
@@ -68,7 +82,7 @@ class ContactForm extends Component {
           </Form.Group>
           <Row>
             <Col md={{ span: 4, offset: 5 }}>
-              <Button variant="btn btn-sm btn-light" type="submit">Contactar</Button>
+              <Button variant="btn btn-sm btn-light" type="submit" onClick={this.confirmMessage}>Contactar</Button>
             </Col>
           </Row>
         </Form>

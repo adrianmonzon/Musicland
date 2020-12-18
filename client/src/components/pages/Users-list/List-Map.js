@@ -11,7 +11,7 @@ class ListMap extends Component {
             lat: 40.463667,
             lng: -3.74922
         },
-        zoom: 6.2
+        zoom: 6
     }
 
     render() {

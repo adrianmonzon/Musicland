@@ -43,7 +43,7 @@ const Navigation = (props) => {
       buttons: ["No", "Sí"]
     })
       .then(answer => {
-        
+
         if (answer) {
           deleteTheUser()
           swal({
@@ -55,26 +55,26 @@ const Navigation = (props) => {
   }
 
   return (
-    <Navbar bg="dark" variant="dark" expand="md" sticky="top">
+    <Navbar variant="dark" expand="md" /*sticky="top"*/ className="nav-menu" >
       <Link to="/">
         <Navbar.Brand>
           <img
             alt="Logotipo"
-            src={logo}
+            src=/*{logo}*/ "https://lighthousejersey.com/listen.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
           />{" "}
-            MusicApp
+            MU𝄞ICLAND
           </Navbar.Brand>
       </Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Link to="/">
+          <Link style={{ textDecoration: 'none' }} to="/">
             <Nav.Link as="div">Inicio</Nav.Link>
           </Link>
-          <Link to="/usuarios">
+          <Link style={{ textDecoration: 'none' }} to="/usuarios">
             <Nav.Link as="div">Músicos</Nav.Link>
           </Link>
           {props.loggedUser ? (
@@ -93,29 +93,20 @@ const Navigation = (props) => {
                   </NavDropdown.Item>
               </Link>
               <NavDropdown.Divider />
-              {/* <Link to="#" style={{ textDecoration: "none" }}> */}
               <NavDropdown.Item
                 className="nav-dropdown"
-                onClick={/*<Toast>
-                    <Toast.Header>
-                      <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" />
-                      <strong className="mr-auto">Bootstrap</strong>
-                      <small>11 mins ago</small>
-                    </Toast.Header>
-                    <Toast.Body>¿Estás segur@ de que quieres eliminar tu perfil?<Button onClick=*/confirmDelete}/*>Sí</Button></Toast.Body>
-                  </Toast>}*/
+                onClick={confirmDelete}
                 style={{ textDecoration: "none" }}
               >
                 Eliminar perfil
                 </NavDropdown.Item>
-              {/* </Link> */}
             </NavDropdown>
           ) : (
               <>
-                <Link to="/registro">
+                <Link style={{ textDecoration: 'none' }} to="/registro">
                   <Nav.Link as="div">Registro</Nav.Link>
                 </Link>
-                <Link to="/iniciar-sesion">
+                <Link style={{ textDecoration: 'none' }} to="/iniciar-sesion">
                   <Nav.Link as="div">Iniciar sesión</Nav.Link>
                 </Link>
               </>

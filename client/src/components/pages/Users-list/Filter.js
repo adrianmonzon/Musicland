@@ -4,7 +4,7 @@ const Filter = (props) => {
   return (
     <Form inline>
       <Form.Label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">
-        Filtrar
+        Buscar por instrumento:
       </Form.Label>
       <Form.Control
         as="select"

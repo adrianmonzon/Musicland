@@ -10,8 +10,10 @@
 }
 
 .login-hr {
-      border: 1px groove white;
-      width: 50%;
-      margin: 0;
+    border: 1px groove white;
+    width: 50%;
+    margin: 0;
+    margin-bottom: 15px;
+
 }
 

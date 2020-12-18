@@ -17,7 +17,11 @@ const users = [
         password: 'popino',
         role: 'USER',
         email: 'popino@gmail.com',
-        image: 'https://images.unsplash.com/photo-1496866613897-3bc4c95f9574?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80'
+        image: 'https://images.unsplash.com/photo-1496866613897-3bc4c95f9574?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80',
+        location: {
+            type: 'Point',
+            coordinates: [40.41837, -3.68295]
+        },
     },
 
     {
@@ -29,11 +33,15 @@ const users = [
         password: 'popino',
         role: 'USER',
         email: 'popino@gmail.com',
-        image: 'https://images.unsplash.com/photo-1471565661762-b9dfae862dbe?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
+        image: 'https://images.unsplash.com/photo-1471565661762-b9dfae862dbe?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+        location: {
+            type: 'Point',
+            coordinates: [42.34106, -3.70184]
+        },
     },
 
     {
-        name: 'John',
+        name: 'César',
         description: 'Llevo años tocando la guitarra y me gustaría formar un grupo',
         instrument: 'Guitarra española',
         age: 29,
@@ -41,30 +49,43 @@ const users = [
         password: 'popino',
         role: 'USER',
         email: 'popino@gmail.com',
-        image: 'https://images.unsplash.com/photo-1529518969858-8baa65152fc8?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80'
+        image: 'https://images.unsplash.com/photo-1566327949737-a9c624adb260?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80',
+        location: {
+            type: 'Point',
+            coordinates: [39.46975, -0.37739]
+        },
     },
 
     {
         name: 'Manu',
-        description: 'Me gustaría encontrar formar un cuarteto de cuerda',
+        description: 'Me gustaría encontrar gente con la que tocar piezas famosas de cuerda',
         instrument: 'Violín',
         age: 35,
         username: 'manu89',
         password: 'popino',
         role: 'USER',
         email: 'popino@gmail.com',
-        image: 'https://images.unsplash.com/photo-1485810051991-f2b8593e6732?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=714&q=80'
+        image: 'https://images.unsplash.com/photo-1485810051991-f2b8593e6732?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=714&q=80',
+        location: {
+            type: 'Point',
+            coordinates: [42.13615, -0.4087]
+        },
     },
 
     {
         name: 'Richi',
-        description: 'Me gusta la música, llevo 3 años tocando la trompeta y ojalá encontrar amigos con quien tocar',
+        description: 'Me gusta la música, llevo 3 años tocando la trompeta y ojalá encontrar gente con quien tocar',
         instrument: 'Trompeta',
         age: 25,
         username: 'richi00',
         password: 'popino',
         role: 'USER',
-        email: 'adrianmonzonf@gmail.com'
+        email: 'adrianfrasquet@gmail.com',
+        image: 'https://images.unsplash.com/photo-1583236753515-7e06aae56395?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
+        location: {
+            type: 'Point',
+            coordinates: [40.41837, -3.68295]
+        },
     },
 
     {
@@ -77,10 +98,10 @@ const users = [
         role: 'USER',
         email: 'popino@gmail.com',
         image: 'https://images.unsplash.com/photo-1518499845966-9a86ddb68051?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
-        // location: {
-        //     type: 'Point',
-        //     coordinates: [40.41837, -3.68295]
-        // },
+        location: {
+            type: 'Point',
+            coordinates: [40.62862, -3.16185]
+        },
     }
 ]
 

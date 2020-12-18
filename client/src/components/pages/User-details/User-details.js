@@ -50,6 +50,7 @@ class UserDetails extends Component {
                                     <p>Instrumento: {this.state.user.instrument}</p>
                                     <p>Edad: {this.state.user.age} años</p>
                                     <Link to="/usuarios" className="btn btn-md btn-light">Volver</Link>
+                                    {!this.props.loggedUser && <Link to="/iniciar-sesion" className="btn btn-md btn-light details-button">Contactar</Link>}
                                 </Col>
                             </Row>
                             <Row>
@@ -58,11 +59,11 @@ class UserDetails extends Component {
                                 <Col md={{ span: 6, offset: 3 }}>
                                     {this.props.loggedUser && <ContactForm loggedUser={this.props.loggedUser} contactUser={this.state.user} />}
                                 </Col>
-                                
-                                    <Col md={{ span: 6, offset: 3 }}>
-                                        <UserMap user={this.state.user}/>
-                                    </Col>
-                                
+                            </Row>
+                            <Row className="map-row">
+                                <Col md={{ span: 6, offset: 3 }}>
+                                    <UserMap user={this.state.user} />
+                                </Col>
                             </Row>
                         </>
                         :

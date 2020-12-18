@@ -8,7 +8,7 @@ class UserMap extends Component {
     }
     static defaultProps = {
         
-        zoom: 16
+        zoom: 8
     }
 
     render() {

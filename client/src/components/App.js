@@ -13,6 +13,7 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Navigation from './shared/Navigation'
 import EditForm from './pages/EditForm/EditForm'
+import FooterPagePro from './layout/Footer';
 
 
 class App extends Component {
@@ -50,6 +51,7 @@ class App extends Component {
           <Route path="/editar-perfil" render={props => this.state.loggedInUser ? <EditForm {...props} storeUser={this.setTheUser} user={this.state.loggedInUser} /> : <Redirect to="/iniciar-sesion" />} />
 
         </Switch>
+        <FooterPagePro />
       </>
     );
   }

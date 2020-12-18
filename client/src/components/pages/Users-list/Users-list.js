@@ -14,13 +14,12 @@ class UsersList extends Component {
     super();
     this.state = {
       users: [],
-      // showModal: false
     };
     this.usersService = new UsersService();
   }
 
   componentDidMount = () => {
-   this.getAllUsers()
+    this.getAllUsers()
   };
 
   getAllUsers = () => {
@@ -34,9 +33,9 @@ class UsersList extends Component {
     if (instrument === 'all') this.getAllUsers()
     else {
       this.usersService
-      .filterByInstrument(instrument)
-      .then((res) => this.setState({ users: res.data }))
-      .catch((err) => console.log(err))
+        .filterByInstrument(instrument)
+        .then((res) => this.setState({ users: res.data }))
+        .catch((err) => console.log(err))
     }
   };
 
@@ -46,7 +45,6 @@ class UsersList extends Component {
         <Container className="list-container">
           <Row>
             <Col md={{ span: 6, offset: 3 }} className="list-top">
-              <h1>Listado de músicos</h1>
               <Filter filterUsers={this.filterByInstrument} />
             </Col>
           </Row>
