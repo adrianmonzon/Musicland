@@ -4,7 +4,7 @@ export default class MailService {
 
     constructor() {
         this.apiHandler = axios.create({
-            baseURL: 'http://localhost:5000/api/mail',
+            baseURL: process.env.REACT_APP_API_URL, /*baseURL: 'http://localhost:5000/api/mail'*/
             withCredentials: true
         })
     }
